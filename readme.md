@@ -6,7 +6,8 @@ Developed as a project for the **Programming Internet Applications (PIA)** cours
 ---
 
 ## 📱 App Preview
-![Mountain Cottage Reservation App Demo](https://github.com/user-attachments/assets/2472b1e2-f915-4e2e-8cd3-88ddee03331c)
+<video src="https://github.com/user-attachments/assets/2472b1e2-f915-4e2e-8cd3-88ddee03331c" controls title="Mountain Cottage Reservation App Demo" style="max-width: 100%;">
+</video>
 
 ---
 
