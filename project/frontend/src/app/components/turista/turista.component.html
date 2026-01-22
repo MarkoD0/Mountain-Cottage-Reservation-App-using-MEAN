@@ -1,0 +1,21 @@
+<header>
+    <h1>Planinska vikendica - Turista</h1>
+    <nav>
+        <button (click)="promeniStavku('profil')" 
+                [class.active]="aktivnaStavka === 'profil'">Profil</button>
+        <button (click)="promeniStavku('vikendice')" 
+                [class.active]="aktivnaStavka === 'vikendice'">Vikendice</button>
+        <button (click)="promeniStavku('rezervacije')" 
+                [class.active]="aktivnaStavka === 'rezervacije'">Rezervacije</button>
+    </nav>
+</header>
+
+<main>
+    <app-profil *ngIf="aktivnaStavka === 'profil'"></app-profil>
+    <app-turista_vikendice *ngIf="aktivnaStavka === 'vikendice'"></app-turista_vikendice>
+    <app-turista_rezervacije *ngIf="aktivnaStavka === 'rezervacije'"></app-turista_rezervacije>
+</main>
+
+<footer>
+    <app-logout></app-logout>
+</footer>

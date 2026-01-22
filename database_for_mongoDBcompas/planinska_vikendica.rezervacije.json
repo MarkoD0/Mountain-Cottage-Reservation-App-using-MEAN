@@ -1,0 +1,250 @@
+[{
+  "_id": {
+    "$oid": "68f5cea22c97c4c8e9e3f608"
+  },
+  "idRezervacije": 1,
+  "idVikendice": 1,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 1",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-19T01:00:00.000Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-20T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-10-21T00:00:00.000Z"
+  },
+  "komentar": null,
+  "ocena": null,
+  "cena": 500,
+  "broj_ljudi": 2,
+  "status": "odobrena",
+  "vikendica_mesto": "mesto 1"
+},
+{
+  "_id": {
+    "$oid": "68f5cf112c97c4c8e9e3f609"
+  },
+  "idRezervacije": 2,
+  "idVikendice": 2,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 2",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-15T01:00:00.000Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-20T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-10-21T00:00:00.000Z"
+  },
+  "komentar": null,
+  "ocena": null,
+  "cena": 1000,
+  "broj_ljudi": 2,
+  "status": "odbijena",
+  "vikendica_mesto": "mesto 2"
+},
+{
+  "_id": {
+    "$oid": "68f5cf2f2c97c4c8e9e3f60a"
+  },
+  "idRezervacije": 3,
+  "idVikendice": 1,
+  "turista_korisnicko_ime": "aa",
+  "vikendica_naziv": "vikendica 1",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-12T01:00:00.000Z"
+  },
+  "datum_od": {
+    "$date": "2025-11-20T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-11-21T00:00:00.000Z"
+  },
+  "komentar": null,
+  "ocena": null,
+  "cena": 1000,
+  "broj_ljudi": 2,
+  "status": "ceka",
+  "vikendica_mesto": "mesto 1"
+},
+{
+  "_id": {
+    "$oid": "68f5cf502c97c4c8e9e3f60c"
+  },
+  "idRezervacije": 4,
+  "idVikendice": 1,
+  "turista_korisnicko_ime": "aa",
+  "vikendica_naziv": "vikendica 1",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-19T01:00:00.000Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-25T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-10-27T00:00:00.000Z"
+  },
+  "komentar": null,
+  "ocena": null,
+  "cena": 1500,
+  "broj_ljudi": 3,
+  "status": "ceka",
+  "vikendica_mesto": "mesto 1"
+},
+{
+  "_id": {
+    "$oid": "68f5cf652c97c4c8e9e3f60d"
+  },
+  "idRezervacije": 5,
+  "idVikendice": 1,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 1",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-05T01:00:00.000Z"
+  },
+  "datum_od": {
+    "$date": "2025-11-01T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-11-02T00:00:00.000Z"
+  },
+  "komentar": null,
+  "ocena": null,
+  "cena": 1000,
+  "broj_ljudi": 2,
+  "status": "ceka",
+  "vikendica_mesto": "mesto 1"
+},
+{
+  "_id": {
+    "$oid": "68f5f7152aecef2de47100a1"
+  },
+  "idRezervacije": 1760950037683,
+  "idVikendice": 4,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 4",
+  "vlasnik_korisnicko_ime": "zika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-20T08:46:56.432Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-28T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-10-29T00:00:00.000Z"
+  },
+  "komentar": "123123123",
+  "ocena": 0,
+  "cena": 20,
+  "broj_ljudi": 1,
+  "status": "ceka",
+  "vikendica_mesto": "mesto 4"
+},
+{
+  "_id": {
+    "$oid": "68f5fd96138e93cc6b1e6328"
+  },
+  "idRezervacije": 1760951702046,
+  "idVikendice": 4,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 4",
+  "vlasnik_korisnicko_ime": "zika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-20T09:14:58.669Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-27T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-10-28T00:00:00.000Z"
+  },
+  "komentar": "",
+  "ocena": 0,
+  "cena": 20,
+  "broj_ljudi": 1,
+  "status": "ceka",
+  "vikendica_mesto": "mesto 4"
+},
+{
+  "_id": {
+    "$oid": "68f60be1473304d3ca849216"
+  },
+  "idRezervacije": 1760955361848,
+  "idVikendice": 1,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 1",
+  "vikendica_mesto": "mesto 1",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-20T10:15:46.277Z"
+  },
+  "datum_od": {
+    "$date": "2025-12-03T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-12-10T00:00:00.000Z"
+  },
+  "komentar": "bla bla bla bla",
+  "ocena": 0,
+  "cena": 560,
+  "broj_ljudi": 5,
+  "status": "ceka"
+},
+{
+  "_id": {
+    "$oid": "68fd08b1c94f0553cb584fec"
+  },
+  "idRezervacije": 1761413297281,
+  "idVikendice": 4,
+  "turista_korisnicko_ime": "pera",
+  "vikendica_naziv": "vikendica 4",
+  "vikendica_mesto": "mesto 4",
+  "vlasnik_korisnicko_ime": "zika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-25T17:27:54.292Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-30T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-11-02T00:00:00.000Z"
+  },
+  "komentar": "bla bla bla ",
+  "ocena": 0,
+  "cena": 510,
+  "broj_ljudi": 10,
+  "status": "ceka"
+},
+{
+  "_id": {
+    "$oid": "68fdd344fd638ec82621e4fb"
+  },
+  "idRezervacije": 1761465156013,
+  "idVikendice": 3,
+  "turista_korisnicko_ime": "dragan",
+  "vikendica_naziv": "vikendica 3",
+  "vikendica_mesto": "mesto 3",
+  "vlasnik_korisnicko_ime": "mika",
+  "datum_rezervisanja": {
+    "$date": "2025-10-26T07:51:05.858Z"
+  },
+  "datum_od": {
+    "$date": "2025-10-27T00:00:00.000Z"
+  },
+  "datum_do": {
+    "$date": "2025-11-10T00:00:00.000Z"
+  },
+  "komentar": "Sa nama bi bili i 3 psa",
+  "ocena": 0,
+  "cena": 6300,
+  "broj_ljudi": 4,
+  "status": "ceka"
+}]

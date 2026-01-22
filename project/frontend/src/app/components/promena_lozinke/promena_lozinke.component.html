@@ -1,0 +1,36 @@
+<b>Promena lozinke</b>
+<hr />
+<form>
+    <table>
+        <tr>
+            <td>Stara lozinka:</td>
+            <td>
+                <input type='password' name='lozinka_stara' [(ngModel)]='lozinka_stara'>
+            </td>
+        </tr>
+        <tr>
+            <td>Nova lozinka:</td>
+            <td>
+                <input type='password' name='lozinka_nova' [(ngModel)]='lozinka_nova'>
+            </td>
+        </tr>
+        <tr>
+            <td>Ponovljena nova lozinka:</td>
+            <td>
+                <input type='password' name='lozinka_nova2' [(ngModel)]='lozinka_nova2'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <input type='button' value='Promena lozinke' (click)='promeniLozinku()'>
+            </td>
+        </tr>
+    </table>
+</form>
+<span class='greska'>{{poruka}}</span>
+
+<br>
+<a [routerLink]="backLink">Nazad</a>
+
+<br>
+<app-logout></app-logout>

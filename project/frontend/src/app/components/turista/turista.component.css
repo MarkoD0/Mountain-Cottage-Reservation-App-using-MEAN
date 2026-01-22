@@ -1,0 +1,115 @@
+.narandzasto{
+  color: orange;
+}
+
+/* Glavni kontejner za host */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6; /* Vrlo svetlo siva pozadina */
+}
+
+/* Zaglavlje (Header) */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+/* Navigacija (Nav) */
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+nav button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Aktivno dugme */
+nav button.active {
+    background-color: white;
+    color: #007bff;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Glavni sadržaj (Main) */
+main {
+    flex-grow: 1;
+    padding: 20px;
+    /* Postavlja pozadinu celog sadržaja na belu, jer komponente imaju svoju unutrašnju padding/margin */
+    background-color: #f4f7f6;
+}
+
+/* Podnožje (Footer) */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 40px;
+    text-align: right;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Stil za logout komponentu unutar futera (ako je app-logout samo dugme) */
+footer app-logout {
+    display: inline-block;
+}
+
+/* Responsivnost */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    nav button {
+        width: 100%;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px 20px;
+        text-align: center;
+    }
+}

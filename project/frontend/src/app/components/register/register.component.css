@@ -1,0 +1,174 @@
+.greska{
+  color: red;
+}
+.card-icon {
+    width: 32px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+:host {
+    --primary-color: #4CAF50; /* Green for Registration/Success */
+    --primary-hover: #43A047;
+    --text-color: #333;
+    --background-light: #f9f9f9;
+    --card-background: #ffffff;
+    --border-radius: 8px;
+    display: block;
+    padding: 20px;
+    background-color: var(--background-light);
+    color: var(--text-color);
+}
+
+b {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+
+form {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px; /* Vertikalni razmak između redova */
+}
+
+form td:first-child {
+    font-weight: bold;
+    width: 40%;
+    padding-right: 15px;
+    vertical-align: top;
+    line-height: 2.2; /* Poravnanje sa input poljima */
+}
+
+form td:last-child {
+    width: 60%;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus, 
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Stil za radio dugmad */
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 15px;
+}
+
+/* Stil za dugme za slanje (Registruj se) */
+button[type='submit'] {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+}
+
+button[type='submit']:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Stil za poruke o grešci */
+.greska {
+    color: #D32F2F; /* Crvena boja */
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #D32F2F;
+    background-color: #FFEBEE;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Stil za ikone kreditne kartice */
+.card-icon {
+    height: 20px; 
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Stil za link za povratak */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Media Query za mobilne uređaje */
+@media (max-width: 650px) {
+    form {
+        margin: 0;
+    }
+    form table, form tbody, form tr, form td {
+        display: block;
+        width: 100%;
+    }
+
+    form tr {
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px dashed #eee;
+    }
+    
+    form td:first-child {
+        width: 100%;
+        padding-bottom: 0;
+        line-height: 1.5;
+    }
+
+    form td:last-child {
+        width: 100%;
+    }
+    
+    input[type="radio"] {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,52 @@
+<div class="table-container">
+    <h2>Pregled svih vikendica (Admin)</h2>
+    <div *ngIf="porukaGreske" class="greska">{{ porukaGreske }}</div>
+    <div *ngIf="sveVikendice.length > 0">
+        <table>
+            <thead>
+                <tr>
+                    <th>Naziv</th>
+                    <th>Vlasnik</th>
+                    <th>Mesto</th>
+                    <th>Prosecna ocena</th>
+                    <th>Sve ocene</th>
+                    <th>Status</th>
+                    <th>Usluge</th>
+                    <th>Telefon</th>
+                    <th>Periodi</th>
+                    <th>Cena</th>
+                    <th>Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vikendica of sveVikendice" [ngClass]="{'low-rating-warning': vikendica.status === 'aktivna' && shouldBeBlocked(vikendica)}">
+                    <td>{{ vikendica.naziv }}</td>
+                    <td>{{ vikendica.vlasnik_korisnicko_ime }}</td>
+                    <td>{{ vikendica.mesto }}</td>
+                    <td>{{ vikendica.srednja_ocena == 0 ? 'nema ocena' : (vikendica.srednja_ocena | number:'1.1-1') }}</td>
+                    <td>
+                        {{ vikendica.ocene_niz.join(', ') || 'Vikendica nema ocena' }}
+                    </td>
+                    <td>
+                        <span [ngClass]="{'status-active': vikendica.status === 'aktivna', 'status-blocked': vikendica.status === 'blokirana'}">
+                            {{ vikendica.status }}
+                        </span>
+                    </td>
+                    <td>
+                        {{ vikendica.usluge.join(', ') || 'Vikendica nema usluge' }}
+                    </td>
+                    <td>{{ vikendica.telefon }}</td>
+                    <td>
+                        {{ vikendica.cenovnik_period.join(', ') || 'Periodi nisu definisane' }}
+                    </td>
+                    <td>
+                        {{ vikendica.cenovnik_cena.join(', ') || 'Cene nisu definisane' }} EUR
+                    </td>
+                    <td>
+                        <button *ngIf="vikendica.status === 'aktivna' && shouldBeBlocked(vikendica)" (click)="blokirajVikendicu(vikendica.idVikendice)" class="btn-block">Blokiraj</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

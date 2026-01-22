@@ -1,0 +1,201 @@
+<div class="detalji-container" *ngIf="vikendica">
+    <h2>Detalji vikendice: {{vikendica.naziv}}</h2>
+    <p><button (click)="vratiSe.emit()"> &lt; Nazad na pregled vikendica</button></p>
+    <hr>
+    
+    <div class="osnovni-podaci">
+        <p><strong>Mesto:</strong> {{vikendica.mesto}}</p>
+        <p><strong>Vlasnik:</strong> {{vikendica.vlasnik_korisnicko_ime}}</p>
+        <p><strong>Telefon:</strong> {{vikendica.telefon}}</p>
+    </div>
+    
+    <div class="usluge-cenovnik">
+        <p><strong>Usluge:</strong> {{vikendica.usluge.join(', ')}}</p>
+        
+        <p><strong>Cenovnik nocenja:</strong></p>
+        <ul *ngIf="vikendica.cenovnik_period && vikendica.cenovnik_period.length > 0; else noCenovnik">
+            <li *ngFor="let period of vikendica.cenovnik_period; let i = index">
+                {{period}}: {{vikendica.cenovnik_cena[i]}} EUR/noc
+            </li>
+        </ul>
+        <ng-template #noCenovnik>
+            <p>Cenovnik nije definisan.</p>
+        </ng-template>
+    </div>
+    
+    <div class="ocene">
+        <p>
+            <strong>Prosecna ocena:</strong> 
+            <span *ngIf="vikendica.srednja_ocena > 0; else noRatingDetails">
+                {{vikendica.srednja_ocena | number:'1.1-1'}} / 5
+                <span *ngFor="let star of getStars(vikendica.srednja_ocena)">
+                    <span *ngIf="star === 1" style="color: gold;">★</span>
+                    <span *ngIf="star === 0.5" style="color: gold;">&#9734;</span>
+                    <span *ngIf="star === 0" style="color: lightgray;">☆</span>
+                </span>
+            </span>
+            <ng-template #noRatingDetails>
+                Nema ocena.
+            </ng-template>
+        </p>
+        <p>
+            <strong>Sve pojedinačne ocene:</strong>
+            <span *ngIf="vikendica.ocene_niz && vikendica.ocene_niz.length > 0">
+                {{vikendica.ocene_niz.join(', ')}}
+            </span>
+            <span *ngIf="!vikendica.ocene_niz || vikendica.ocene_niz.length === 0">
+                Nema pojedinačnih unesenih ocena.
+            </span>
+        </p>
+    </div>
+
+    <div class="galerija">
+        <h3>Galerija slika</h3>
+        <div *ngIf="vikendica.slike && vikendica.slike.length > 0; else noGallery">
+            <img [src]="getSlikaUrl(vikendica.slike[trenutnaSlikaIndex])" alt="Slika vikendice" class="glavna-slika" style="max-width: 100%; height: auto;">
+            <div class="kontrole" style="text-align: center; margin-top: 10px;">
+                <button (click)="prethodnaSlika()" [disabled]="trenutnaSlikaIndex === 0">Prethodna</button>
+                <span>{{trenutnaSlikaIndex + 1}} / {{vikendica.slike.length}}</span>
+                <button (click)="sledecaSlika()" [disabled]="trenutnaSlikaIndex === vikendica.slike.length - 1">Sledeca</button>
+            </div>
+        </div>
+        <ng-template #noGallery>
+            <p>Nema dostupnih slika za ovu vikendicu.</p>
+        </ng-template>
+    </div>
+
+    <div class="mapa">
+        <h3>Mapa</h3>
+        <div *ngIf="vikendica.koordinate && (vikendica.koordinate.lat !== 0 || vikendica.koordinate.lng !== 0); else noCoords">
+            <img [src]="getMapaSlikaUrl()" alt="Slika mapa" class="mapa-slika" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+            <p style="font-size: small; margin-top: 5px;">
+                Koordinate: Lat {{vikendica.koordinate.lat}}, Lng {{vikendica.koordinate.lng}}
+            </p>
+        </div>
+        <ng-template #noCoords>
+            <p>Koordinate za ovu vikendicu nisu unete.</p>
+        </ng-template>
+    </div>
+</div>
+
+<div class="zakazivanje-container" style="border: 1px solid #007bff; padding: 15px; border-radius: 5px; margin-top: 20px;">
+    <h2>Zakazivanje iznajmljivanja</h2>
+    
+    <p *ngIf="porukaGreske" style="color: red; font-weight: bold;">⚠️ Greška: {{porukaGreske}}</p>
+
+    <div *ngIf="trenutniKorak === 1">
+        <form (ngSubmit)="nastaviNaKorak2()">
+            <div class="forma-grupa">
+                <label for="datumPocetka">Datum ulaska (od 14:00):</label>
+                <input type="date" id="datumPocetka" name="datumPocetka" [(ngModel)]="rezervacijaPodaci.datumPocetka" [min]="minDatum" required>
+            </div>
+            <div class="forma-grupa">
+                <label for="datumKraja">Datum izlaska (do 10:00):</label>
+                <input type="date" id="datumKraja" name="datumKraja" [(ngModel)]="rezervacijaPodaci.datumKraja" [min]="rezervacijaPodaci.datumPocetka || minDatum" required>
+            </div>
+            <div class="forma-grupa">
+                <label for="odrasli">Broj odraslih osoba:</label>
+                <input type="number" id="odrasli" name="odrasli" [(ngModel)]="rezervacijaPodaci.odrasli" min="1" required>
+            </div>
+            <div class="forma-grupa">
+                <label for="deca">Broj dece:</label>
+                <input type="number" id="deca" name="deca" [(ngModel)]="rezervacijaPodaci.deca" min="0" required>
+            </div>
+            <button type="submit" style="background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">
+                Nastavite na Korak 2 ➡️
+            </button>
+        </form>
+    </div>
+    
+    <div *ngIf="trenutniKorak === 2 && rezervacijaZaSlanje">
+        <h3>Potvrda rezervacije i plaćanje</h3>
+        
+        <div class="sumar-rezervacije" style="border: 1px dashed #ccc; padding: 10px; margin-bottom: 20px; background-color: #f9f9f9;">
+            <p><strong>Naziv vikendice:</strong> {{rezervacijaZaSlanje.vikendica_naziv}}</p>
+            <p>
+                <strong>Datumi:</strong> 
+                {{rezervacijaZaSlanje.datum_od | date: 'dd.MM.yyyy'}} - {{rezervacijaZaSlanje.datum_do | date: 'dd.MM.yyyy'}} 
+                ({{ukupanBrojNocenja}} noćenja)
+            </p>
+            <p><strong>Osobe:</strong> {{rezervacijaZaSlanje.broj_ljudi}} ({{rezervacijaPodaci.odrasli}} odraslih, {{rezervacijaPodaci.deca}} dece)</p>
+            <p style="font-size: 1.2em; font-weight: bold; color: green;">
+                Ukupna cena: {{rezervacijaZaSlanje.cena | number:'1.2-2'}} EUR
+            </p>
+        </div>
+        
+        <form (ngSubmit)="posaljiRezervaciju()">
+            
+            <div class="forma-grupa">
+                <label for="brojKartice">Broj kreditne kartice za plaćanje:</label>
+                <input 
+                    type="text" 
+                    id="brojKartice" 
+                    name="brojKartice" 
+                    [(ngModel)]="karticaZaPlacanje" 
+                    (blur)="proveriKarticu()"
+                    [ngStyle]="{'border': karticaZaPlacanje && !proveriKarticu() ? '2px solid red' : (karticaZaPlacanje ? '2px solid green' : '1px solid #ccc')}"
+                    required 
+                    style="width: 300px;"
+                >
+                <p style="font-size: small; color: #666; margin-top: 5px;">
+                    <span *ngIf="cardType" style="font-weight: bold; color: blue;">Prepoznati tip: {{cardType}}.</span>
+                    <span *ngIf="porukaGreskeKartica" style="font-weight: bold; color: red;">{{porukaGreskeKartica}}</span>
+                </p>
+                <p style="font-size: small; color: #666;">
+                    * Trenutna vrednost je automatski preuzeta sa vašeg profila: 
+                    <span *ngIf="ulogovan?.kartica">
+                        {{ ulogovan.kartica }}
+                    </span>
+                    <span *ngIf="!ulogovan?.kartica">
+                        Nije uneta na profilu.
+                    </span>
+                    Ova izmena **NEĆE** uticati na karticu sačuvanu na vašem profilu.
+                </p>
+            </div>
+            
+            <div class="forma-grupa">
+                <label for="dodatniZahtevi">Dodatni zahtevi (opciono, do 500 karaktera):</label>
+                <textarea id="dodatniZahtevi" name="dodatniZahtevi" [(ngModel)]="dodatniZahtevi" maxlength="500" rows="4" style="width: 100%;"></textarea>
+                <p style="font-size: small; color: #666;">Karaktera preostalo: {{500 - dodatniZahtevi.length}}</p>
+            </div>
+            <hr>
+            
+            <button type="button" (click)="vratiNaKorak1()" style="background-color: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+                ⬅️ Nazad na Korak 1
+            </button>
+            
+            <button type="submit" style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+                Potvrdi rezervaciju i plati ({{rezervacijaZaSlanje.cena | number:'1.2-2'}} EUR) ✅
+            </button>
+            
+        </form>
+    </div>
+
+    <div *ngIf="trenutniKorak === 3">
+        <h3>Status rezervacije</h3>
+        
+        <div *ngIf="porukaUspeha" style="border: 2px solid green; padding: 15px; background-color: #e6ffe6; border-radius: 5px;">
+            <h4 style="color: green;">🎉 Rezervacija je uspešno poslata!</h4>
+            <p>{{porukaUspeha}}</p>
+            <p *ngIf="poslatiIDRezervacije">
+                Vaš ID rezervacije je: <strong>#{{poslatiIDRezervacije}}</strong>.
+                Molimo sačekajte da vlasnik vikendice **{{rezervacijaZaSlanje?.vlasnik_korisnicko_ime}}** obradi vaš zahtev.
+            </p>
+            <p>
+                Detalji: 
+                {{rezervacijaZaSlanje?.datum_od | date: 'dd.MM.yyyy'}} - {{rezervacijaZaSlanje?.datum_do | date: 'dd.MM.yyyy'}} 
+                za {{rezervacijaZaSlanje?.broj_ljudi}} osoba.
+                Ukupna cena: **{{rezervacijaZaSlanje?.cena | number:'1.2-2'}} EUR.
+            </p>
+        </div>
+        
+        <div *ngIf="porukaGreske" style="border: 2px solid red; padding: 15px; background-color: #ffe6e6; border-radius: 5px;">
+            <h4 style="color: red;">❌ Greška prilikom rezervacije!</h4>
+            <p>{{porukaGreske}}</p>
+        </div>
+
+        <button (click)="vratiSeNaListu()" style="margin-top: 20px; background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+            🏠 Povratak na listu vikendica
+        </button>
+    </div>
+</div>

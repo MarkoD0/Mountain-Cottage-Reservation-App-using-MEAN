@@ -1,0 +1,25 @@
+
+<b>Admin Ulogujte se</b>
+<hr />
+<form>
+    <table>
+        <tr>
+            <td>Korisnicko ime:</td>
+            <td>
+                <input type='text' name='korisnicko_ime' [(ngModel)]='korisnicko_ime'>
+            </td>
+        </tr>
+        <tr>
+            <td>Lozinka:</td>
+            <td>
+                <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <input type='button' value='Prijava' (click)='prijavaNaSistem()'>
+            </td>
+        </tr>
+    </table>
+</form>
+<span class='greska'>{{poruka}}</span>

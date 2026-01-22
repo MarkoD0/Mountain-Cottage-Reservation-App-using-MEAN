@@ -1,0 +1,90 @@
+<b>Registracija</b>
+<hr />
+<form (ngSubmit)="registracija()">
+    <table>
+        <tr>
+            <td>Korisničko ime (obavezno):</td>
+            <td>
+                <input type='text' name='korisnicko_ime' [(ngModel)]='korisnicko_ime' required>
+            </td>
+        </tr>
+        <tr>
+            <td>Lozinka (obavezno):</td>
+            <td>
+                <input type='password' name='lozinka' [(ngModel)]='lozinka' required>
+            </td>
+        </tr>
+        <tr>
+            <td>Ime (obavezno):</td>
+            <td>
+                <input type='text' name='ime' [(ngModel)]='ime' required>
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime (obavezno):</td>
+            <td>
+                <input type='text' name='prezime' [(ngModel)]='prezime' required>
+            </td>
+        </tr>
+        <tr>
+            <td>Pol:</td>
+            <td>
+                <input type="radio" name="pol" value="M" [(ngModel)]="pol"> M
+                <input type="radio" name="pol" value="Z" [(ngModel)]="pol"> Z
+            </td>
+        </tr>
+        <tr>
+            <td>Adresa:</td>
+            <td>
+                <input type='text' name='adresa' [(ngModel)]='adresa'>
+            </td>
+        </tr>
+        <tr>
+            <td>Kontakt telefon:</td>
+            <td>
+                <input type='text' name='telefon' [(ngModel)]='telefon'>
+            </td>
+        </tr>
+        <tr>
+            <td>E-mail (obavezno):</td>
+            <td>
+                <input type='email' name='mejl' [(ngModel)]='mejl' required>
+            </td>
+        </tr>
+        <tr>
+            <td>Broj kreditne kartice:</td>
+            <td>
+                <input type='text' name='kartica' [(ngModel)]='kartica' (ngModelChange)="proveriKarticu()">
+                <span *ngIf="cardType">
+                    {{ cardType }} 
+                    <img *ngIf="cardType === 'Diners'" src="assets/images/diners.png" alt="Diners Club" class="card-icon">
+                    <img *ngIf="cardType === 'MasterCard'" src="assets/images/mastercard.png" alt="MasterCard" class="card-icon">
+                    <img *ngIf="cardType === 'Visa'" src="assets/images/visa.png" alt="Visa" class="card-icon">
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Tip korisnika:</td>
+            <td>
+                <select name="tip" [(ngModel)]='tip'>
+                    <option value="turista">Turista</option>
+                    <option value="vlasnik">Vlasnik</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Profilna slika:</td>
+            <td>
+                <input type="file" name="profilnaSlika" (change)="onFileSelected($event)" accept=".jpg,.png">
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <button type='submit'>Registruj se</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<div *ngIf="poruka" class='greska'>{{poruka}}</div>
+<hr/>
+<a routerLink="">Povratak na prijavu</a>

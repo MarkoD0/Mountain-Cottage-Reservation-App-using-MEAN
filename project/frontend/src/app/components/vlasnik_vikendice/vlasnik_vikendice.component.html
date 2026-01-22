@@ -1,0 +1,189 @@
+<div *ngIf="porukaGreske" class="error-message">
+    <p>{{ porukaGreske }}</p>
+</div>
+
+<div *ngIf="poruka" class='greska'>{{poruka}}</div>
+<div *ngIf="porukaUspeh" class='tacno'>{{porukaUspeh}}</div>
+
+<div *ngIf="!modAzuriranja && !modDodavanja">
+    <h2>Moje vikendice</h2>
+
+    <div *ngIf="sveVikendice.length === 0 && !porukaGreske">
+        <p>Vlasnik trenutno nema ni jednu vikendicu.</p>
+    </div>
+
+    <div *ngIf="sveVikendice.length > 0">
+        <table>
+            <thead>
+                <tr>
+                    <th>Naziv</th>
+                    <th>Mesto</th>
+                    <th>Prosecna ocena</th>
+                    <th>Status</th>
+                    <th>Usluge</th>
+                    <th>Cena</th>
+                    <th>Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vikendica of sveVikendice">
+                    <td>{{ vikendica.naziv }}</td>
+                    <td>{{ vikendica.mesto }}</td>
+                    <td>{{ vikendica.srednja_ocena == 0 ? 'nema ocena' : (vikendica.srednja_ocena | number:'1.1-1') }}</td>
+                    <td>
+                        <span [ngClass]="{'status-active': vikendica.status === 'aktivna', 'status-blocked': vikendica.status === 'blokirana'}">
+                            {{ vikendica.status }}
+                        </span>
+                    </td> 
+                    <td>
+                        {{ vikendica.usluge.join(', ') || 'Vikendica nema usluge' }}
+                    </td>
+                    <td>
+                        {{ vikendica.cenovnik_cena.join(', ') || 'Cene nisu definisane' }} EUR
+                    </td>
+                    <td>
+                        <button (click)="urediVikendicu(vikendica.idVikendice)" class="btn-secondary">Uredi</button>
+                        <button (click)="obrisiVikendicu(vikendica.idVikendice)" class="btn-reject">Obrisi</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button (click)="dodajVikendicu()" class="btn-add">Dodaj vikendicu</button>
+</div>
+
+<div *ngIf="modAzuriranja && vikendicaZaUredjivanje" class="edit-form-container">
+    <h2>Uredjivanje vikendice: {{ vikendicaZaUredjivanje.naziv }}</h2>
+    
+    <form (ngSubmit)="azurirajVikendicu()" class="edit-form">
+        <div class="form-group">
+            <label>ID Vikendice (Ne moze se menjati):</label>
+            <input type="text" [value]="vikendicaZaUredjivanje.idVikendice" disabled>
+        </div>
+        
+        <div class="form-group">
+            <label>Vlasnik (Ne moze se menjati):</label>
+            <input type="text" [value]="vikendicaZaUredjivanje.vlasnik_korisnicko_ime" disabled>
+        </div>
+
+        <div class="form-group required">
+            <label for="naziv">Naziv:</label>
+            <input id="naziv" type="text" [(ngModel)]="vikendicaZaUredjivanje.naziv" name="naziv" required>
+        </div>
+
+        <div class="form-group required">
+            <label for="mesto">Mesto:</label>
+            <input id="mesto" type="text" [(ngModel)]="vikendicaZaUredjivanje.mesto" name="mesto" required>
+        </div>
+
+        <div class="form-group required">
+            <label for="telefon">Kontakt telefon:</label>
+            <input id="telefon" type="text" [(ngModel)]="vikendicaZaUredjivanje.telefon" name="telefon" required>
+        </div>
+
+        <div class="form-group">
+            <label>Koordinate:</label>
+            <div class="coordinate-group">
+                <input type="number" [(ngModel)]="vikendicaZaUredjivanje.koordinate.lat" name="lat" placeholder="Latitude">
+                <input type="number" [(ngModel)]="vikendicaZaUredjivanje.koordinate.lng" name="lng" placeholder="Longitude">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Cenovnik Periodi (odvojeno zarezom):</label>
+            <textarea [(ngModel)]="cenovnikPeriodInput" name="cenovnik_period_input" rows="2" placeholder=""></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Cene (odvojeno zarezom):</label>
+            <textarea [(ngModel)]="cenovnikCenaInput" name="cenovnik_cena_input" rows="2" placeholder=""></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="usluge">Usluge (odvojene zarezom):</label>
+            <textarea id="usluge" [(ngModel)]="uslugeInput" name="usluge_input" rows="3" placeholder=""></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Postojece slike (Kliknite na sliku za uklanjanje):</label>
+            <div class="image-gallery">
+                <div *ngFor="let slika of vikendicaZaUredjivanje.slike" class="image-item" (click)="ukloniPostojecuSliku(slika)">
+                    <img [src]="getImageUrl(slika)" alt="Vikendica slika">
+                    <span class="remove-overlay">UKLONI</span>
+                </div>
+            </div>
+            <p class="napomena-slike">*Trenutni broj slika: {{ vikendicaZaUredjivanje.slike.length }}</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="slike">Dodaj nove slike (maksimalno 5, format: JPG/PNG):</label>
+            <input id="slike" type="file" multiple (change)="onFilesSelected($event)" accept=".jpg,.png">
+            <p *ngIf="noveSlike.length > 0">Odabrano: {{ noveSlike.length }} novih slika.</p>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-confirm">Sacuvaj izmene</button>
+            <button type="button" (click)="odustaniUredjivanje()" class="btn-secondary">Odustani</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="modDodavanja && novaVikendica" class="edit-form-container">
+    <h2>Dodavanje nove vikendice</h2>
+
+    <form (ngSubmit)="sacuvajNovuVikendicu()" class="edit-form">
+        <div class="form-group">
+            <label>Vlasnik (Ne moze se menjati):</label>
+            <input type="text" [value]="novaVikendica.vlasnik_korisnicko_ime" disabled>
+        </div>
+
+        <div class="form-group required">
+            <label for="naziv_n">Naziv:</label>
+            <input id="naziv_n" type="text" [(ngModel)]="novaVikendica.naziv" name="naziv_n" required>
+        </div>
+
+        <div class="form-group required">
+            <label for="mesto_n">Mesto:</label>
+            <input id="mesto_n" type="text" [(ngModel)]="novaVikendica.mesto" name="mesto_n" required>
+        </div>
+
+        <div class="form-group required">
+            <label for="telefon_n">Kontakt telefon:</label>
+            <input id="telefon_n" type="text" [(ngModel)]="novaVikendica.telefon" name="telefon_n" required>
+        </div>
+
+        <div class="form-group required">
+            <label>Koordinate:</label>
+            <div class="coordinate-group">
+                <input type="number" [(ngModel)]="novaVikendica.koordinate.lat" name="lat_n" placeholder="Latitude" required>
+                <input type="number" [(ngModel)]="novaVikendica.koordinate.lng" name="lng_n" placeholder="Longitude" required>
+            </div>
+        </div>
+
+        <div class="form-group required">
+            <label>Cenovnik Periodi (MIN. 2, odvojeno zarezom):</label>
+            <textarea [(ngModel)]="cenovnikPeriodInput" name="cenovnik_period_input_n" rows="2" placeholder="Leto, Zima" required></textarea>
+        </div>
+
+        <div class="form-group required">
+            <label>Cene (MIN. 2, odvojeno zarezom):</label>
+            <textarea [(ngModel)]="cenovnikCenaInput" name="cenovnik_cena_input_n" rows="2" placeholder="?, ?" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="usluge_n">Usluge (odvojene zarezom):</label>
+            <textarea id="usluge_n" [(ngModel)]="uslugeInput" name="usluge_input_n" rows="3" placeholder=""></textarea>
+        </div>
+
+        <div class="form-group required">
+            <label for="slike_n">Slike (format: JPG/PNG, dimenzije: 100x100 do 300x300):</label>
+            <input id="slike_n" type="file" multiple (change)="onFilesSelected($event)" accept=".jpg,.png" required>
+            <p *ngIf="noveSlike.length > 0">Odabrano: {{ noveSlike.length }} slika.</p>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-confirm">Sacuvaj novu vikendicu</button>
+            <button type="button" (click)="odustaniMod()" class="btn-secondary">Odustani</button>
+        </div>
+    </form>
+</div>

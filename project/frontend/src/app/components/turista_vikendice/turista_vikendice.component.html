@@ -1,0 +1,113 @@
+<div class="vikendice-turista-container">
+
+    <div *ngIf="prikaziDetalje && selektovanaVikendica">
+        <app-detalji-vikendice 
+            [vikendica]="selektovanaVikendica"
+            (vratiSe)="vratiSeNaTabelu()"> 
+        </app-detalji-vikendice>
+        <span class="greska">{{porukaDetalji}}</span>
+    </div>
+
+    <div *ngIf="!prikaziDetalje">
+        <div class="vikendice-turista-container">
+            <h2>Dostupne vikendice</h2>
+            <hr/>
+
+            <h3>Pretraga vikendica po parametrima</h3>
+            <div>
+                <form (ngSubmit)="pretraziVikendice()">
+                    <table>
+                        <tr>
+                            <td>Naziv:</td>
+                            <td>
+                                <input type='text' name='nazivVikendicaPretraga' [(ngModel)]='nazivVikendicaPretraga'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mesto:</td>
+                            <td>
+                                <input type='text' name='mestoVikendicaPretraga' [(ngModel)]='mestoVikendicaPretraga'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <button type='submit'>Pretrazi</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <span class='poruka' *ngIf="porukaVikendicaPretraga">{{porukaVikendicaPretraga}}</span>
+            </div>
+            
+            <hr/>
+
+            <h3>Tabelarni prikaz vikendica ({{sveVikendice.length}})</h3>
+            <div style="max-height: 400px; overflow-y: auto;">
+                <table border="1" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th (click)="sortirajVikendice('naziv')" style="cursor: pointer;">
+                                Naziv 
+                                <span *ngIf="sortKolona === 'naziv'">
+                                    <span *ngIf="sortSmer === 1">&#9650;</span>
+                                    <span *ngIf="sortSmer === -1">&#9660;</span>
+                                </span>
+                                <span *ngIf="sortKolona !== 'naziv'" style="font-weight: bold; color: gray;">&#8645;</span>
+                            </th>
+                            
+                            <th (click)="sortirajVikendice('mesto')" style="cursor: pointer;">
+                                Mesto 
+                                <span *ngIf="sortKolona === 'mesto'">
+                                    <span *ngIf="sortSmer === 1">&#9650;</span>
+                                    <span *ngIf="sortSmer === -1">&#9660;</span>
+                                </span>
+                                <span *ngIf="sortKolona !== 'mesto'" style="font-weight: bold; color: gray;">&#8645;</span>
+                            </th>
+                            
+                            <th>Usluge</th>
+                            <th>Vlasnik</th>
+                            <th>Telefon</th>
+                            <th>Ocena</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let v of sveVikendice">
+                            <td>
+                                <a href="#" (click)="prikaziDetaljeVikendice(v.idVikendice); $event.preventDefault()">
+                                    {{v.naziv}}
+                                </a>
+                            </td>
+                            <td>{{v.mesto}}</td>
+                            <td>{{v.usluge.join(', ')}}</td>
+                            <td>{{v.vlasnik_korisnicko_ime}}</td>
+                            <td>{{v.telefon}}</td>
+                            
+                            <td>
+                                <ng-container *ngIf="v.srednja_ocena > 0; else noRating">
+                                    {{v.srednja_ocena | number:'1.1-1'}} / 5
+                                    <div class="stars-display">
+                                        <span *ngFor="let star of getStars(v.srednja_ocena)">
+                                            <span *ngIf="star === 1" style="color: gold;">★</span>
+                                            <span *ngIf="star === 0.5" style="color: gold;">&#9734;</span>
+                                            <span *ngIf="star === 0" style="color: lightgray;">☆</span>
+                                        </span>
+                                    </div>
+                                </ng-container>
+                                <ng-template #noRating>
+                                    Nema ocena
+                                </ng-template>
+                            </td>
+
+                            <td>{{v.status}}</td>
+                        </tr>
+                        <tr *ngIf="sveVikendice.length === 0">
+                            <td colspan="7" style="text-align: center;">Nema registrovanih vikendica koje odgovaraju parametrima.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <span class="greska">{{porukaVikendicaPretraga}}</span>
+    </div>
+</div>

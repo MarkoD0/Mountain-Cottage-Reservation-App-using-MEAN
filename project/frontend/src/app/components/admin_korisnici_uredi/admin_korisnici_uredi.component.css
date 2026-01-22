@@ -1,0 +1,202 @@
+/* Globalni kontejner i osnovni stilovi */
+div {
+    padding: 20px;
+    background-color: #f8f9fa;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #343a40;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 3px solid #007bff; /* Admin plava */
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Poruke - greška, uspeh (Preuzeti iz prethodnog stila) */
+.greska, .tacno {
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.greska {
+    background-color: #f8d7da; /* Svetlo crvena */
+    border: 1px solid #f5c6cb;
+    color: #721c24; /* Tamno crvena */
+}
+
+.tacno {
+    background-color: #d4edda; /* Svetlo zelena */
+    border: 1px solid #c3e6cb;
+    color: #155724; /* Tamno zelena */
+}
+
+/* --- Stilovi za sliku profila --- */
+.profile-picture {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.slika {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Kružna slika */
+    border: 5px solid #007bff; /* Plavi obrub */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Stilovi za formu u tabeli --- */
+.edit-mode {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.edit-mode table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.edit-mode tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.edit-mode tr {
+    border-bottom: 1px solid #eee;
+}
+
+.edit-mode td {
+    padding: 12px 0;
+    vertical-align: middle;
+}
+
+.edit-mode td:first-child {
+    width: 30%;
+    font-weight: 600;
+    color: #495057;
+    padding-left: 10px;
+}
+
+.edit-mode td:last-child {
+    padding-right: 10px;
+}
+
+/* Stilovi za input polja */
+.edit-mode input[type="text"],
+.edit-mode input[type="email"],
+.edit-mode input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Uključuje padding u širinu */
+}
+
+.edit-mode input[type="text"]:focus,
+.edit-mode input[type="email"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Radio dugmad za pol */
+.edit-mode td input[type="radio"] {
+    margin-right: 5px;
+}
+.edit-mode td input[type="radio"]:nth-of-type(2) {
+    margin-left: 15px;
+}
+
+/* Prikaz tipa kartice */
+.card-icon {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+/* Napomena o novoj slici */
+.edit-mode p {
+    font-size: 0.85rem;
+    color: #28a745;
+    margin: 5px 0 0 0;
+}
+
+
+/* Stilovi za dugmad akcije */
+.edit-mode button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 10px 10px 10px 0;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 0.95rem;
+}
+
+.edit-mode button[type="submit"] {
+    background-color: #007bff; /* Plavo - Potvrdi izmene */
+    color: white;
+}
+
+.edit-mode button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.edit-mode button[type="button"] {
+    background-color: #6c757d; /* Siva - Odustani */
+    color: white;
+}
+
+.edit-mode button[type="button"]:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* --- RESPONZIVNOST FORME --- */
+@media (max-width: 600px) {
+    .edit-mode table {
+        display: block;
+    }
+
+    .edit-mode tr {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .edit-mode td {
+        display: block;
+        width: 100% !important;
+        padding: 5px 10px !important;
+        text-align: left;
+    }
+    
+    .edit-mode td:first-child {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        color: #007bff;
+    }
+    
+    /* Dugmad u poslednjem redu */
+    .edit-mode tr:last-child td {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+        padding-top: 15px !important;
+    }
+    .edit-mode button {
+        flex-grow: 1;
+        margin: 0;
+    }
+}

@@ -1,0 +1,19 @@
+<header>
+    <h1>Planinska vikendica - ADMINISTRATOR</h1>
+    <nav>
+        <button (click)="promeniStavku('korisnici')" 
+                [class.active]="aktivnaStavka === 'korisnici'">Korisnici</button>
+        <button (click)="promeniStavku('vikendice')" 
+                [class.active]="aktivnaStavka === 'vikendice'">Vikendice</button>
+    </nav>
+</header>
+
+<main>
+    <app-admin_korisnici *ngIf="aktivnaStavka === 'korisnici'"></app-admin_korisnici>
+    <app-admin_vikendice *ngIf="aktivnaStavka === 'vikendice'"></app-admin_vikendice>
+</main>
+
+<footer>
+    <a routerLink="/promena_lozinke">Promena lozinke</a>
+    <app-logout></app-logout>
+</footer>

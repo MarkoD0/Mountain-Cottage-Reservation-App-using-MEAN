@@ -1,0 +1,44 @@
+<div class="rezervacije-container">
+    <h2>Moje Rezervacije</h2>
+    
+    <div *ngIf="ucitavanje" class="loading-message">
+        <p>Učitavanje rezervacija...</p>
+    </div>
+    
+    <div *ngIf="porukaGreske && !ucitavanje" class="error-message">
+        <p>⚠️ {{porukaGreske}}</p>
+    </div>
+
+    <div *ngIf="!ucitavanje && !porukaGreske">
+        <div *ngIf="rezervacije.length === 0" class="no-data-message">
+            <p>Trenutno nemate nijednu rezervaciju.</p>
+        </div>
+
+        <table *ngIf="rezervacije.length > 0">
+            <thead>
+                <tr>
+                    <th>Vikendica</th>
+                    <th>Mesto</th>
+                    <th>Period</th>
+                    <th>Broj osoba</th>
+                    <th>Ukupna cena (EUR)</th>
+                    <th>Status</th>
+                    <th>Datum rezervisanja</th>
+                    <th>komentar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rez of rezervacije">
+                    <td><strong>{{rez.vikendica_naziv}}</strong></td>
+                    <td>{{rez.vikendica_mesto}}</td>
+                    <td>{{rez.datum_od | date: 'dd.MM.yyyy'}} - {{rez.datum_do | date: 'dd.MM.yyyy'}}</td>
+                    <td>{{rez.broj_ljudi}}</td>
+                    <td class="cena">{{rez.cena | number: '1.2-2'}}</td>
+                    <td><span [ngClass]="statusClassMap[rez.status]" class="status-badge">{{statusMap[rez.status]}}</span></td>
+                    <td class="datum-rezervisanja">{{rez.datum_rezervisanja | date: 'dd.MM.yyyy'}}</td>
+                    <td class="datum-rezervisanja">{{rez.komentar}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

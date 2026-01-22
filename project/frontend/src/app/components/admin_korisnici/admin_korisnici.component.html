@@ -1,0 +1,105 @@
+<div class="vikendice-turista-container">
+
+    <h2>Svi turisti ({{sviTuristi.length}}):</h2>
+    <div style="max-height: 400px; overflow-y: auto;">
+        <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>Korisnicko ime</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Pol</th>
+                    <th>Adresa</th>
+                    <th>Telefon</th>
+                    <th>Mejl</th>
+                    <th>Kartica</th>
+                    <th>Status</th>
+                    <th>Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of sviTuristi">
+                    <td>{{v.korisnicko_ime}}</td>
+                    <td>{{v.ime}}</td>
+                    <td>{{v.prezime}}</td>
+                    <td>{{v.pol}}</td>
+                    <td>{{v.adresa}}</td>
+                    <td>{{v.telefon}}</td>
+                    <td>{{v.mejl}}</td>
+                    <td>{{v.kartica}}</td>
+                    <td>{{v.status}}</td>
+                    <td>
+                        <tr *ngIf="v.status === STATUS_CEKA">
+                            <button (click)="aktivirajKorisnika(v.korisnicko_ime)" class="btn-accept">Aktiviraj</button>
+                            <button (click)="odbijKorisnika(v.korisnicko_ime)" class="btn-reject">Odbij</button>
+                        </tr>
+                        <tr *ngIf="v.status === STATUS_AKTIVAN">
+                            <button (click)="urediKorisnika(v.korisnicko_ime)" class="btn-secondary">Uredi</button>
+                            <button (click)="blokirajKorisnika(v.korisnicko_ime)" class="btn-reject">Blokiraj</button>
+                        </tr>
+                        <tr *ngIf="v.status === STATUS_BLOKIRAN">
+                            <button (click)="urediKorisnika(v.korisnicko_ime)" class="btn-secondary">Uredi</button>
+                            <button (click)="aktivirajKorisnika(v.korisnicko_ime)" class="btn-accept">Aktiviraj</button>
+                        </tr>
+                    </td>
+                </tr>
+                <tr *ngIf="sviTuristi.length === 0">
+                    <td colspan="7" style="text-align: center;">Nema registrovanih turista koje odgovaraju parametrima.</td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="greska">{{porukaTuristaPretraga}}</span>
+    </div>
+
+    <h2>Svi vlasnici ({{sviVlasnici.length}}):</h2>
+    <div style="max-height: 400px; overflow-y: auto;">
+        <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>Korisnicko ime</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Pol</th>
+                    <th>Adresa</th>
+                    <th>Telefon</th>
+                    <th>Mejl</th>
+                    <th>Kartica</th>
+                    <th>Status</th>
+                    <th>Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of sviVlasnici">
+                    <td>{{v.korisnicko_ime}}</td>
+                    <td>{{v.ime}}</td>
+                    <td>{{v.prezime}}</td>
+                    <td>{{v.pol}}</td>
+                    <td>{{v.adresa}}</td>
+                    <td>{{v.telefon}}</td>
+                    <td>{{v.mejl}}</td>
+                    <td>{{v.kartica}}</td>
+                    <td>{{v.status}}</td>
+                    <td>
+                        <tr *ngIf="v.status === STATUS_CEKA">
+                            <button (click)="aktivirajKorisnika(v.korisnicko_ime)" class="btn-accept">Aktiviraj</button>
+                            <button (click)="odbijKorisnika(v.korisnicko_ime)" class="btn-reject">Odbij</button>
+                        </tr>
+                        <tr *ngIf="v.status === STATUS_AKTIVAN">
+                            <button (click)="urediKorisnika(v.korisnicko_ime)" class="btn-secondary">Uredi</button>
+                            <button (click)="blokirajKorisnika(v.korisnicko_ime)" class="btn-reject">Blokiraj</button>
+                        </tr>
+                        <tr *ngIf="v.status === STATUS_BLOKIRAN">
+                            <button (click)="urediKorisnika(v.korisnicko_ime)" class="btn-secondary">Uredi</button>
+                            <button (click)="aktivirajKorisnika(v.korisnicko_ime)" class="btn-accept">Aktiviraj</button>
+                        </tr>
+                    </td>
+                </tr>
+                <tr *ngIf="sviVlasnici.length === 0">
+                    <td colspan="7" style="text-align: center;">Nema registrovanih vlasnika koje odgovaraju parametrima.</td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="greska">{{porukaVlasnikPretraga}}</span>
+    </div>
+
+</div>

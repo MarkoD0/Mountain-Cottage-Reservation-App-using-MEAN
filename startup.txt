@@ -1,0 +1,10 @@
+startup
+    cd backend  -> npm run build  ->  npm run start
+    cd frontend -> npm run start
+
+
+backend installs:
+    npm install bcrypt
+    npm install bcryptjs
+    npm install multer
+    npm install --save-dev @types/multer

@@ -1,0 +1,255 @@
+[{
+  "_id": {
+    "$oid": "68f58b182c97c4c8e9e3f5ff"
+  },
+  "idVikendice": 3,
+  "naziv": "vikendica 3",
+  "mesto": "mesto 3",
+  "usluge": [
+    "usluga1",
+    "usluga2"
+  ],
+  "cenovnik_period": [
+    "leto",
+    "zima"
+  ],
+  "cenovnik_cena": [
+    100,
+    200
+  ],
+  "telefon": "1212121213",
+  "koordinate": {
+    "lat": 50,
+    "lng": 22
+  },
+  "ocene_niz": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "srednja_ocena": 5,
+  "vlasnik_korisnicko_ime": "mika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica1.png",
+    "vikendica2.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68f58b802c97c4c8e9e3f600"
+  },
+  "idVikendice": 4,
+  "naziv": "vikendica 4",
+  "mesto": "mesto 4",
+  "usluge": [
+    "usluga1",
+    "usluzna usluga",
+    "bas usluzna usluga",
+    "usluga2"
+  ],
+  "cenovnik_period": [
+    "leto",
+    "prolece",
+    "jesen",
+    "zima"
+  ],
+  "cenovnik_cena": [
+    100,
+    50,
+    20,
+    200
+  ],
+  "telefon": "0692651000",
+  "koordinate": {
+    "lat": 50,
+    "lng": 20
+  },
+  "ocene_niz": [
+    5,
+    4,
+    5,
+    4,
+    4,
+    5
+  ],
+  "srednja_ocena": 4.5,
+  "vlasnik_korisnicko_ime": "zika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica3.png",
+    "vikendica4.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68f58bd42c97c4c8e9e3f601"
+  },
+  "idVikendice": 5,
+  "naziv": "zikina vikendica",
+  "mesto": "lepo mesto",
+  "usluge": [
+    "usluga1",
+    "usluzna usluga",
+    "bas usluzna usluga",
+    "usluga2"
+  ],
+  "cenovnik_period": [
+    "leto",
+    "prolece",
+    "jesen",
+    "zima"
+  ],
+  "cenovnik_cena": [
+    100,
+    100,
+    50,
+    300
+  ],
+  "telefon": "0692651000",
+  "koordinate": {
+    "lat": 51,
+    "lng": 21
+  },
+  "ocene_niz": [
+    3,
+    5,
+    5,
+    3,
+    3,
+    5
+  ],
+  "srednja_ocena": 4,
+  "vlasnik_korisnicko_ime": "zika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica5.png",
+    "vikendica2.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68fa7501ff6a035dc2f69577"
+  },
+  "idVikendice": 1,
+  "naziv": "vikendica 1",
+  "mesto": "mesto 11",
+  "usluge": [
+    "teren za kosarku",
+    "bazen",
+    "Terasa",
+    "krov",
+    "vrata"
+  ],
+  "cenovnik_period": [
+    "leto",
+    "zima",
+    "jesen"
+  ],
+  "cenovnik_cena": [
+    30,
+    40,
+    5
+  ],
+  "telefon": "0655555555",
+  "koordinate": {
+    "lat": 40.11,
+    "lng": 19.99
+  },
+  "ocene_niz": [
+    5,
+    5,
+    4,
+    5,
+    4
+  ],
+  "srednja_ocena": 4.6,
+  "vlasnik_korisnicko_ime": "mika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica3.png",
+    "vikendica4.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68fab0ab4c3c9e4b7cf16c51"
+  },
+  "idVikendice": 6,
+  "naziv": "mikina vikendica",
+  "mesto": "mikinovac",
+  "usluge": [
+    "wifi",
+    "dvoriste",
+    "rostilj",
+    "toboga",
+    "ljuljaska"
+  ],
+  "cenovnik_period": [
+    "leto",
+    "zima",
+    "prolece",
+    "jesen"
+  ],
+  "cenovnik_cena": [
+    100,
+    200,
+    50,
+    50
+  ],
+  "telefon": "1212121213",
+  "koordinate": {
+    "lat": 36.36,
+    "lng": 25.25
+  },
+  "ocene_niz": [
+    2,
+    3,
+    1,
+    1,
+    1
+  ],
+  "srednja_ocena": 1.6,
+  "vlasnik_korisnicko_ime": "mika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica6.png"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68fdd70cfd638ec82621e521"
+  },
+  "idVikendice": 2,
+  "naziv": "apartmani mika",
+  "mesto": "mesto 2",
+  "usluge": [
+    "ima bas mnogo usluga"
+  ],
+  "cenovnik_period": [
+    "Leto",
+    "Zima",
+    "Jesen"
+  ],
+  "cenovnik_cena": [
+    100,
+    200,
+    50
+  ],
+  "telefon": "1212121213",
+  "koordinate": {
+    "lat": 12.123,
+    "lng": 13.134
+  },
+  "ocene_niz": [],
+  "srednja_ocena": 0,
+  "vlasnik_korisnicko_ime": "mika",
+  "status": "aktivna",
+  "slike": [
+    "vikendica6.png"
+  ]
+}]

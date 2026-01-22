@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "68f21adc8db27d22a76fc38c"
+  },
+  "korisnicko_ime": "admin",
+  "lozinka": "$2b$10$UWzoQlwaavY2YUJSkW0K8.uaZH0jSgIonPrGYNh1oRv1jt7DiO.dm",
+  "tip": "admin",
+  "ime": "admin",
+  "prezime": "admin",
+  "pol": "M",
+  "adresa": "adminska ulica",
+  "telefon": "1111111111",
+  "mejl": "admin@gmail.com",
+  "kartica": "300111111111111",
+  "slika": "default.png",
+  "status": "aktivan"
+},
+{
+  "_id": {
+    "$oid": "68f36094f00eed25cd8c36c8"
+  },
+  "korisnicko_ime": "asd",
+  "lozinka": "$2b$10$UWzoQlwaavY2YUJSkW0K8.uaZH0jSgIonPrGYNh1oRv1jt7DiO.dm",
+  "tip": "turista",
+  "ime": "asd",
+  "prezime": "asdic",
+  "pol": "Z",
+  "adresa": "asd ulica",
+  "telefon": "062111111111",
+  "mejl": "asd@gmail.com",
+  "kartica": "5220222222222223",
+  "slika": "default.png",
+  "status": "blokiran"
+},
+{
+  "_id": {
+    "$oid": "68f36c48f00eed25cd8c36cd"
+  },
+  "korisnicko_ime": "sdfsdf",
+  "lozinka": "$2b$10$UWzoQlwaavY2YUJSkW0K8.uaZH0jSgIonPrGYNh1oRv1jt7DiO.dm",
+  "tip": "turista",
+  "ime": "sdfs",
+  "prezime": "fghh",
+  "pol": "",
+  "adresa": "",
+  "telefon": "",
+  "mejl": "fgh",
+  "kartica": "",
+  "slika": "default.png",
+  "status": "ceka"
+},
+{
+  "_id": {
+    "$oid": "68f36c63f00eed25cd8c36cf"
+  },
+  "korisnicko_ime": "sdddsffd",
+  "lozinka": "$2b$10$UWzoQlwaavY2YUJSkW0K8.uaZH0jSgIonPrGYNh1oRv1jt7DiO.dm",
+  "tip": "turista",
+  "ime": "asd",
+  "prezime": "ad",
+  "pol": "",
+  "adresa": "",
+  "telefon": "asd",
+  "mejl": "asd",
+  "kartica": "300222222222111",
+  "slika": "default.png",
+  "status": "ceka"
+},
+{
+  "_id": {
+    "$oid": "68f3a998142c33aa332ebe7c"
+  },
+  "korisnicko_ime": "aa",
+  "lozinka": "$2b$10$UWzoQlwaavY2YUJSkW0K8.uaZH0jSgIonPrGYNh1oRv1jt7DiO.dm",
+  "tip": "turista",
+  "ime": "aa",
+  "prezime": "aa",
+  "pol": "M",
+  "adresa": "aa ulica",
+  "telefon": "1212121212",
+  "mejl": "aa@gmail.com",
+  "kartica": "4556222222222222",
+  "slika": "1760888375770-504132566.png",
+  "status": "aktivan"
+},
+{
+  "_id": {
+    "$oid": "68f3beac142c33aa332ebe81"
+  },
+  "korisnicko_ime": "pera",
+  "lozinka": "$2b$10$4rrUpACS6JiC2ddY98BmxePiPpuQXKeZaG1fAVoCWxbvwU2cw7oc6",
+  "tip": "turista",
+  "ime": "pera",
+  "prezime": "peric",
+  "pol": "M",
+  "adresa": "perina ulica",
+  "telefon": "0631234567",
+  "mejl": "pera@gmail.com",
+  "kartica": "4539000000001777",
+  "slika": "1760888630889-829189690.png",
+  "status": "aktivan"
+},
+{
+  "_id": {
+    "$oid": "68f42fdb79e0ea00a080ac9f"
+  },
+  "korisnicko_ime": "mika",
+  "lozinka": "$2b$10$FoSvHoqGNkBk3Hwi64hP1ONdyzDGbA72Wjs3vF3dL.17VCq97Khoa",
+  "tip": "vlasnik",
+  "ime": "mika",
+  "prezime": "mika",
+  "pol": "M",
+  "adresa": "mikina ulica",
+  "telefon": "1212121213",
+  "mejl": "mika@gmail.com",
+  "kartica": "4539222200000005",
+  "slika": "1760833499564-405182895.png",
+  "status": "aktivan"
+},
+{
+  "_id": {
+    "$oid": "68f58c437ec2a77d8eac9f4c"
+  },
+  "korisnicko_ime": "zika",
+  "lozinka": "$2b$10$BGYIJbhLpabXFkg8JQz5POZ9Y1Wtck0nhN.hixMXoWUGGNEAYYM8O",
+  "tip": "vlasnik",
+  "ime": "zika",
+  "prezime": "zikic",
+  "pol": "Z",
+  "adresa": "zikina uluca",
+  "telefon": "0692651000",
+  "mejl": "zika@gmail.com",
+  "kartica": "300222265465465",
+  "slika": "default.png",
+  "status": "aktivan"
+},
+{
+  "_id": {
+    "$oid": "68fdcecffd638ec82621e4be"
+  },
+  "korisnicko_ime": "dragan",
+  "lozinka": "$2b$10$wUKoRzeSbkFd7qKlqbYyLOkNYXuQkcjtL5/186KKoXQDOKshpauTW",
+  "tip": "turista",
+  "ime": "dragan",
+  "prezime": "draganovic",
+  "pol": "M",
+  "adresa": "ulica draganova",
+  "telefon": "0631234678",
+  "mejl": "dragan@gmail.com",
+  "kartica": "5231231231231231",
+  "slika": "1761464696185-64005290.png",
+  "status": "aktivan"
+}]

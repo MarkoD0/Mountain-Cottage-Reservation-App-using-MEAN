@@ -1,0 +1,200 @@
+/* Globalni kontejner i osnovni stilovi */
+.vikendice-turista-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #343a40;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 3px solid #007bff; /* Admin plava */
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Stil za div sa fiksnom visinom i skrolovanjem */
+div[style*="max-height: 400px"] {
+    margin-bottom: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+}
+
+/* --- Stilovi za tabelu (Preuzeti iz prethodnog stila) --- */
+table {
+    width: 100% !important; /* Nadjačava inline stil */
+    border-collapse: collapse;
+    border: none !important; /* Uklanja border="1" */
+}
+
+thead th {
+    background-color: #007bff !important; /* Nadjačava inline stil */
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #0056b3;
+    font-size: 0.9rem;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e9f5ff;
+}
+
+td {
+    padding: 12px 15px;
+    color: #495057;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    word-break: break-word; /* Za duže adrese/mejlove */
+}
+
+/* Stil za poruku kada nema rezultata */
+tbody tr:last-child td[colspan="7"] {
+    padding: 20px;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+/* Poruke greške ispod tabele */
+span.greska {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    font-weight: 600;
+}
+
+/* Tretiranje tr-ova unutar td-a za Akcije kao flex kontejner */
+td tr {
+    display: flex;
+    gap: 8px;
+    border: none;
+    background-color: transparent !important;
+}
+
+/* Dugmad u tabeli */
+td button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* Definicije boja za akcije */
+.btn-accept {
+    background-color: #28a745; /* Zeleno - Aktiviraj */
+    color: white;
+}
+
+.btn-accept:hover {
+    background-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+.btn-reject {
+    background-color: #dc3545; /* Crveno - Odbij/Blokiraj */
+    color: white;
+}
+
+.btn-reject:hover {
+    background-color: #bd2130;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Siva - Uredi */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+
+/* --- RESPONZIVNOST --- */
+@media (max-width: 992px) {
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tbody tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding: 10px 0;
+    }
+
+    /* Prilagođavanje td-ova da prikazuju header */
+    tbody td {
+        text-align: right;
+        padding-left: 55%;
+        position: relative;
+    }
+    
+    tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 55%;
+        padding-left: 10px;
+        font-weight: 600;
+        text-align: left;
+        color: #007bff;
+        font-size: 0.9rem;
+    }
+
+    /* OPREZ: Labela mora da se mapira ručno, ali koristićemo brojeve kolona */
+    /* U Anguilar tabelama, `data-label` se ne može lako dodati, pa se oslanjamo na nth-of-type */
+    
+    td:nth-of-type(1)::before { content: "Korisnicko ime:"; }
+    td:nth-of-type(2)::before { content: "Ime:"; }
+    td:nth-of-type(3)::before { content: "Prezime:"; }
+    td:nth-of-type(4)::before { content: "Pol:"; }
+    td:nth-of-type(5)::before { content: "Adresa:"; }
+    td:nth-of-type(6)::before { content: "Telefon:"; }
+    td:nth-of-type(7)::before { content: "Mejl:"; }
+    td:nth-of-type(8)::before { content: "Kartica:"; }
+    td:nth-of-type(9)::before { content: "Status:"; }
+    td:nth-of-type(10)::before { content: "Akcije:"; text-align: left;}
+
+    /* Centriranje dugmadi na mobilnom i prilagođavanje tr unutar td */
+    td:nth-of-type(10) {
+        text-align: left;
+    }
+
+    td tr {
+        padding: 0;
+        margin: 0;
+        border: none;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}

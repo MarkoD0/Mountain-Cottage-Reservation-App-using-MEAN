@@ -1,0 +1,110 @@
+.greska{
+  color: red;
+}
+
+/* Glavni kontejner i kartica */
+:host {
+    display: block;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+b {
+    font-size: 1.5em;
+    color: #333;
+    display: block;
+    margin-bottom: 15px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 15px 0 25px 0;
+}
+
+/* Stil za formu */
+form {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* Razmak između redova */
+}
+
+td {
+    padding: 5px 0;
+}
+
+td:first-child {
+    font-weight: 500;
+    color: #555;
+    width: 40%;
+}
+
+/* Input polja za lozinke */
+input[type='password'] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type='password']:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Dugme za promenu lozinke */
+input[type='button'] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type='button']:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Poruka o grešci */
+.greska {
+    display: block;
+    margin-top: 20px;
+    color: #dc3545;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Linkovi za navigaciju */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.95em;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-align: center;
+    color: #007bff;
+}

@@ -1,0 +1,71 @@
+<div>
+    <h2>Uređivanje profila korisnika: {{korisnikZaIzmenu.korisnicko_ime}} ({{korisnikZaIzmenu.tip}})</h2>
+
+    <div *ngIf="korisnikZaIzmenu.korisnicko_ime" class="display-mode">
+        <div class="profile-picture">
+            <img [src]="getImageUrl(korisnikZaIzmenu.slika)" [alt]="'Profilna slika korisnika ' + korisnikZaIzmenu.korisnicko_ime" class="slika">
+        </div>
+    </div>
+
+    <form *ngIf="korisnikZaIzmenu.korisnicko_ime && modAzuriranja" (ngSubmit)="azurirajProfil()" class="edit-mode">
+        <table>
+            <tr>
+                <td>Korisnicko ime:</td>
+                <td>{{korisnikZaIzmenu.korisnicko_ime}}</td>
+            </tr>
+            <tr>
+                <td>Ime (obavezno):</td>
+                <td><input type='text' name='ime' [(ngModel)]='korisnikZaIzmenu.ime' required></td>
+            </tr>
+            <tr>
+                <td>Prezime (obavezno):</td>
+                <td><input type='text' name='prezime' [(ngModel)]='korisnikZaIzmenu.prezime' required></td>
+            </tr>
+            <tr>
+                <td>Pol:</td>
+                <td>
+                    <input type="radio" name="pol" value="M" [(ngModel)]="korisnikZaIzmenu.pol"> M
+                    <input type="radio" name="pol" value="Z" [(ngModel)]="korisnikZaIzmenu.pol"> Z
+                </td>
+            </tr>
+            <tr>
+                <td>Adresa:</td>
+                <td><input type='text' name='adresa' [(ngModel)]='korisnikZaIzmenu.adresa'></td>
+            </tr>
+            <tr>
+                <td>Kontakt telefon:</td>
+                <td><input type='text' name='telefon' [(ngModel)]='korisnikZaIzmenu.telefon'></td>
+            </tr>
+            <tr>
+                <td>E-mail (obavezno):</td>
+                <td><input type='email' name='mejl' [(ngModel)]='korisnikZaIzmenu.mejl' required></td>
+            </tr>
+            <tr *ngIf="korisnikZaIzmenu.tip === 'turista'">
+                <td>Broj kreditne kartice:</td>
+                <td>
+                    <input type='text' name='kartica' [(ngModel)]='korisnikZaIzmenu.kartica' (ngModelChange)="proveriKarticu()">
+                    <span *ngIf="cardType && cardType !== 'Nepoznat tip'">({{ cardType }}) 
+                        <img *ngIf="cardType === 'Diners'" src="assets/images/diners.png" alt="Diners Club" class="card-icon">
+                        <img *ngIf="cardType === 'MasterCard'" src="assets/images/mastercard.png" alt="MasterCard" class="card-icon">
+                        <img *ngIf="cardType === 'Visa'" src="assets/images/visa.png" alt="Visa" class="card-icon">
+                    </span>
+                </td>
+            </tr>
+            <tr>
+            <td>Profilna slika:</td>
+                <td>
+                    <input type="file" name="profilnaSlika" (change)="onFileSelected($event)" accept=".jpg,.png">
+                    <p *ngIf="novaSlika">**Nova slika odabrana: {{novaSlika.name}}**</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                    <button type="submit">Potvrdi izmene</button>
+                    <button type="button" (click)="odustani()">Odustani (povratak na listu)</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div *ngIf="poruka" class='greska'>{{poruka}}</div>
+    <div *ngIf="porukaUspeh" class='tacno'>{{porukaUspeh}}</div>
+</div>

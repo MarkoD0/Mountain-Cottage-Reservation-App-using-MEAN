@@ -1,0 +1,62 @@
+<div *ngIf="porukaGreske" class="error-message">
+    <p>{{ porukaGreske }}</p>
+</div>
+
+<h2>Neobrađene rezervacije</h2>
+
+<div *ngIf="neobradjeneRezervacije.length === 0 && !porukaGreske">
+    <p>Trenutno nema neobrađenih zahteva za rezervaciju.</p>
+</div>
+
+<div *ngIf="neobradjeneRezervacije.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>Vikendica</th>
+                <th>Mesto</th>
+                <th>Datum od</th>
+                <th>Datum do</th>
+                <th>Turista</th>
+                <th>Broj osoba</th>
+                <th>Komentar</th>
+                <th>Rezervisano dana</th>
+                <th>Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rez of neobradjeneRezervacije">
+                <td>{{ rez.vikendica_naziv }}</td>
+                <td>{{ rez.vikendica_mesto }}</td>
+                <td>{{ rez.datum_od | date: 'dd.MM.yyyy.' }}</td>
+                <td>{{ rez.datum_do | date: 'dd.MM.yyyy.' }}</td>
+                <td>{{ rez.turista_korisnicko_ime }}</td>
+                <td>{{ rez.broj_ljudi }}</td> 
+                <td>{{ rez.komentar }}</td> 
+                <td>{{ rez.datum_rezervisanja | date: 'dd.MM.yyyy.' }}</td>
+                <td>
+                    <button (click)="potvrdiRezervaciju(rez.idRezervacije)" class="btn-confirm">Potvrdi</button>
+                    <button (click)="otvoriModalOdbijanja(rez.idRezervacije)" class="btn-reject">Odbij</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="prikaziModalOdbijanja" class="modal-backdrop">
+    <div class="modal-content">
+        <h3>Odbijanje rezervacije (ID: {{ rezervacijaZaObraduID }})</h3>
+        
+        <p>Molimo unesite komentar za odbijanje:</p>
+        
+        <textarea [(ngModel)]="komentarOdbijanja" rows="4" maxlength="500" placeholder="Obavezan komentar za odbijanje..."></textarea>
+        
+        <div *ngIf="porukaModala" class="error-message-modal">
+            {{ porukaModala }}
+        </div>
+        
+        <div class="modal-actions">
+            <button (click)="odbijRezervaciju()" class="btn-reject">Potvrdi Odbijanje</button>
+            <button (click)="zatvoriModalOdbijanja()" class="btn-secondary">Odustani</button>
+        </div>
+    </div>
+</div>

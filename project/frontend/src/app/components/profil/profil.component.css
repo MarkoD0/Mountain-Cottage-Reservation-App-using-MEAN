@@ -1,0 +1,192 @@
+.narandzasto{
+  color: orange;
+}
+
+.greska{
+  color: red;
+}
+
+.tacno{
+  color: green;
+}
+
+
+/* Globalni kontejner stila */
+:host {
+    display: block;
+    padding: 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Stil za prikaz podataka (display-mode) */
+.display-mode {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.slika {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.display-mode p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.card-icon {
+    width: 30px;
+    height: auto;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Stil za ažuriranje (edit-mode) */
+.edit-mode {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.edit-mode table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.edit-mode td {
+    padding: 8px 15px;
+    vertical-align: middle;
+}
+
+.edit-mode td:first-child {
+    font-weight: 500;
+    width: 35%;
+}
+
+.edit-mode input[type="text"],
+.edit-mode input[type="email"],
+.edit-mode input[type="file"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.edit-mode input[type="text"]:focus,
+.edit-mode input[type="email"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.edit-mode input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Stil za dugmad */
+button, input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    text-transform: uppercase;
+}
+
+/* Azuriraj podatke (display mode) dugme */
+.display-mode button {
+    background-color: #007bff;
+    color: white;
+    margin-top: 15px;
+}
+.display-mode button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Potvrdi izmene dugme */
+.edit-mode button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+.edit-mode button[type="submit"]:hover {
+    background-color: #1e7e34;
+}
+
+/* Odustani dugme */
+.edit-mode button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
+.edit-mode button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+/* Poruke */
+.greska {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.tacno {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Link za promenu lozinke */
+a[routerLink="/promena_lozinke"] {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s;
+}
+a[routerLink="/promena_lozinke"]:hover {
+    border-bottom: 2px solid #007bff;
+}

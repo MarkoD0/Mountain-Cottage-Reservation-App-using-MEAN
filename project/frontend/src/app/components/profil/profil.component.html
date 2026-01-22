@@ -1,0 +1,91 @@
+<div>
+        <h2>Podaci {{ulogovan.tip}}</h2>
+        <div *ngIf="!modAzuriranja" class="display-mode">
+                <div class="profile-picture">
+                        <img [src]="getImageUrl(ulogovan.slika)" [alt]="'Profilna slika korisnika ' + ulogovan.korisnicko_ime" class="slika">
+                </div>
+                <p>Korisnicko ime: {{ulogovan.korisnicko_ime}}</p>
+                <p>Ime: {{ulogovan.ime}}</p>
+                <p>Prezime: {{ulogovan.prezime}}</p>
+                <p>Pol: {{ulogovan.pol}}</p>
+                <p>Adresa: {{ulogovan.adresa}}</p>
+                <p>Telefon: {{ulogovan.telefon}}</p>
+                <p>Mejl: {{ulogovan.mejl}}</p>
+                <p>
+                        Broj kreditne kartice: {{ulogovan.kartica}}
+                        <span *ngIf="cardType">
+                                {{ cardType }}
+                                <img *ngIf="cardType === 'Diners'" src="assets/images/diners.png" alt="Diners Club" class="card-icon">
+                                <img *ngIf="cardType === 'MasterCard'" src="assets/images/mastercard.png" alt="MasterCard" class="card-icon">
+                                <img *ngIf="cardType === 'Visa'" src="assets/images/visa.png" alt="Visa" class="card-icon">
+                        </span>
+                </p>
+
+                <button (click)="omoguciAzuriranje()">Azuriraj podatke</button>
+        </div>
+
+        <form *ngIf="modAzuriranja" (ngSubmit)="azurirajProfil()" class="edit-mode">
+        <table>
+                <tr>
+                        <td>Korisnicko ime:</td>
+                        <td>{{ulogovan.korisnicko_ime}}</td> </tr>
+                <tr>
+                        <td>Ime (obavezno):</td>
+                        <td><input type='text' name='ime' [(ngModel)]='ulogovan.ime' required></td>
+                </tr>
+                <tr>
+                        <td>Prezime (obavezno):</td>
+                        <td><input type='text' name='prezime' [(ngModel)]='ulogovan.prezime' required></td>
+                </tr>
+                <tr>
+                        <td>Pol:</td>
+                        <td>
+                                <input type="radio" name="pol" value="M" [(ngModel)]="ulogovan.pol"> M
+                                <input type="radio" name="pol" value="Z" [(ngModel)]="ulogovan.pol"> Z
+                        </td>
+                </tr>
+                <tr>
+                        <td>Adresa:</td>
+                        <td><input type='text' name='adresa' [(ngModel)]='ulogovan.adresa'></td>
+                </tr>
+                <tr>
+                        <td>Kontakt telefon:</td>
+                        <td><input type='text' name='telefon' [(ngModel)]='ulogovan.telefon'></td>
+                </tr>
+                <tr>
+                        <td>E-mail (obavezno):</td>
+                        <td><input type='email' name='mejl' [(ngModel)]='ulogovan.mejl' required></td>
+                </tr>
+                <tr>
+                        <td>Broj kreditne kartice:</td>
+                        <td>
+                                <input type='text' name='kartica' [(ngModel)]='ulogovan.kartica' (ngModelChange)="proveriKarticu()">
+                                <span *ngIf="cardType && cardType !== 'Nepoznat tip'">
+                                        ({{ cardType }}) 
+                                        <img *ngIf="cardType === 'Diners'" src="assets/images/diners.png" alt="Diners Club" class="card-icon">
+                                        <img *ngIf="cardType === 'MasterCard'" src="assets/images/mastercard.png" alt="MasterCard" class="card-icon">
+                                        <img *ngIf="cardType === 'Visa'" src="assets/images/visa.png" alt="Visa" class="card-icon">
+                                </span>
+                        </td>
+                </tr>
+                <tr>
+                        <td>Profilna slika:</td>
+                        <td>
+                                <input type="file" name="profilnaSlika" (change)="onFileSelected($event)" accept=".jpg,.png">
+                                <p *ngIf="novaSlika">**Nova slika odabrana: {{novaSlika.name}}**</p>
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan='2'>
+                                <button type="submit">Potvrdi izmene</button>
+                                <button type="button" (click)="odustani()">Odustani</button>
+                        </td>
+                </tr>
+        </table>
+        </form>
+        <div *ngIf="poruka" class='greska'>{{poruka}}</div>
+        <div *ngIf="porukaUspeh" class='tacno'>{{porukaUspeh}}</div>
+</div>
+
+<br>
+<a routerLink="/promena_lozinke">Promena lozinke</a>

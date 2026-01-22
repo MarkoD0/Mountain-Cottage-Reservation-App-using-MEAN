@@ -1,0 +1,180 @@
+/* Globalni kontejner i osnovni stilovi */
+.table-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #343a40;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 3px solid #007bff; /* Admin plava */
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Poruka greške */
+.greska {
+    display: block;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    font-weight: 600;
+}
+
+/* --- Stilovi za tabelu --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden; /* Omogućava da se zaobljenje vidi na headeru */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+}
+
+thead th {
+    background-color: #007bff; /* Plava tema */
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #0056b3;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover:not(.low-rating-warning) {
+    background-color: #e9f5ff;
+}
+
+td {
+    padding: 12px 15px;
+    color: #495057;
+    vertical-align: top; /* Bolje za duge liste usluga/ocena */
+    font-size: 0.85rem;
+    word-break: break-word; 
+}
+
+/* --- Stil za upozorenje o niskoj oceni (LOW RATING WARNING) --- */
+.low-rating-warning {
+    background-color: #f8d7da !important; /* Svetlo crvena/roze za upozorenje */
+    border: 2px solid #dc3545; /* Tamnija crvena ivica */
+}
+
+.low-rating-warning td {
+    color: #721c24; /* Tamno crveni tekst */
+    font-weight: 600;
+}
+
+.low-rating-warning:hover {
+    background-color: #f1b0b5 !important;
+}
+
+/* --- Stilovi za status (Active/Blocked) --- */
+.status-active {
+    background-color: #28a745; /* Zelena */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.status-blocked {
+    background-color: #dc3545; /* Crvena */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* --- Dugmad za akcije --- */
+.btn-block {
+    background-color: #dc3545; /* Crveno - Blokiraj */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.btn-block:hover {
+    background-color: #bd2130;
+    transform: translateY(-1px);
+}
+
+
+/* --- RESPONZIVNOST --- */
+@media (max-width: 1200px) {
+    /* Uklanja header na manjim ekranima */
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tbody tr {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding: 10px 0;
+    }
+
+    /* Prilagođavanje td-ova za prikazivanje labela */
+    tbody td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    
+    tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 48%;
+        padding-left: 10px;
+        font-weight: 600;
+        text-align: left;
+        color: #007bff;
+        font-size: 0.9rem;
+        word-break: normal;
+    }
+
+    /* OPREZ: Ručno mapiranje labela za 11 kolona */
+    td:nth-of-type(1)::before { content: "Naziv:"; }
+    td:nth-of-type(2)::before { content: "Vlasnik:"; }
+    td:nth-of-type(3)::before { content: "Mesto:"; }
+    td:nth-of-type(4)::before { content: "Ocena:"; }
+    td:nth-of-type(5)::before { content: "Sve ocene:"; }
+    td:nth-of-type(6)::before { content: "Status:"; }
+    td:nth-of-type(7)::before { content: "Usluge:"; }
+    td:nth-of-type(8)::before { content: "Telefon:"; }
+    td:nth-of-type(9)::before { content: "Periodi:"; }
+    td:nth-of-type(10)::before { content: "Cena:"; }
+    td:nth-of-type(11)::before { content: "Akcije:"; }
+
+    /* Centriranje dugmadi na mobilnom */
+    td:nth-of-type(11) {
+        text-align: left;
+        padding-left: 10px;
+    }
+}

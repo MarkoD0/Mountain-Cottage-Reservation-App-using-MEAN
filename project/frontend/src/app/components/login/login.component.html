@@ -1,0 +1,129 @@
+<div>
+    <h2>Opste informacije</h2>
+    <hr/>
+    <div>
+        <p>Ukupan broj aktivnih vikendica: <b>{{ukupnoVikendica}}</b></p>
+        <p>Ukupan broj registrovanih vlasnika: <b>{{brojVlasnika}}</b></p>
+        <p>Ukupan broj registrovanih turista: <b>{{brojTurista}}</b></p>
+    </div>
+    <div>
+        <p>Broj rezervisanih vikendica u poslednjih 24h: <b>{{brojRezervisanih24h}}</b></p>
+        <p>Broj rezervisanih vikendica u poslednjih 7dana: <b>{{brojRezervisanih7d}}</b></p>
+        <p>Broj rezervisanih vikendica u poslednjih 30dana: <b>{{brojRezervisanih30d}}</b></p>
+    </div>
+    <hr/>
+
+    <h3>Pretraga vikendica po parametrima</h3>
+    <div>
+        <form>
+            <table>
+                <tr>
+                    <td>Naziv:</td>
+                    <td>
+                        <input type='text' name='nazivVikendicaPretraga' [(ngModel)]='nazivVikendicaPretraga'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mesto:</td>
+                    <td>
+                        <input type='text' name='mestoVikendicaPretraga' [(ngModel)]='mestoVikendicaPretraga'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                        <input type='button' value='Pretrazi' (click)='pretraziVikendice()'>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <span class='greska'>{{porukaVikendicaPretraga}}</span>
+    </div>
+
+    <hr/>
+
+    <h3>Tabelarni prikaz vikendica ({{sveVikendice.length}})</h3>
+    <div style="max-height: 300px; overflow-y: auto;">
+        <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th (click)="sortirajVikendice('naziv')" style="cursor: pointer;">
+                        Naziv 
+                        <span *ngIf="sortKolona === 'naziv'">
+                            <span *ngIf="sortSmer === 1">&#9650;</span>
+                            <span *ngIf="sortSmer === -1">&#9660;</span>
+                        </span>
+                        <span *ngIf="sortKolona !== 'naziv'" style="font-weight: bold; color: gray;">&#8645;</span>
+                    </th>
+                    
+                    <th (click)="sortirajVikendice('mesto')" style="cursor: pointer;">
+                        Mesto 
+                        <span *ngIf="sortKolona === 'mesto'">
+                            <span *ngIf="sortSmer === 1">&#9650;</span>
+                            <span *ngIf="sortSmer === -1">&#9660;</span>
+                        </span>
+                        <span *ngIf="sortKolona !== 'mesto'" style="font-weight: bold; color: gray;">&#8645;</span>
+                    </th>
+                    
+                    <th>Usluge</th>
+                    <th>Vlasnik</th>
+                    <th>Telefon</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of sveVikendice">
+                    <td>{{v.naziv}}</td>
+                    <td>{{v.mesto}}</td>
+                    <td>{{v.usluge.join(', ')}}</td>
+                    <td>{{v.vlasnik_korisnicko_ime}}</td>
+                    <td>{{v.telefon}}</td>
+                    <td>{{v.status}}</td>
+                </tr>
+                <tr *ngIf="sveVikendice.length === 0">
+                    <td colspan="7" style="text-align: center;">Nema registrovanih vikendica koje odgovaraju parametrima.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+</div>
+
+
+<div>
+    <h3>Ulogujte se</h3>
+    <form>
+        <table>
+            <tr>
+                <td>Korisnicko ime:</td>
+                <td>
+                    <input type='text' name='korisnicko_ime' [(ngModel)]='korisnicko_ime'>
+                </td>
+            </tr>
+            <tr>
+                <td>Lozinka:</td>
+                <td>
+                    <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                </td>
+            </tr>
+            <tr>
+                <td>Tip:</td>
+                <td>
+                    <select name="tip" [(ngModel)]='tip'>
+                        <option value="turista">turista</option>
+                        <option value="vlasnik">vlasnik</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                    <input type='button' value='Prijava' (click)='prijavaNaSistem()'>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <span class='greska'>{{poruka}}</span>
+    <hr/>
+    <a routerLink="register">Registracija</a>
+    <hr/>
+</div>

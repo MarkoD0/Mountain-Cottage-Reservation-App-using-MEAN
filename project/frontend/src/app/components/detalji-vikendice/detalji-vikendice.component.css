@@ -1,0 +1,230 @@
+/* Glavni kontejner */
+.detalji-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e9ecef;
+    margin: 20px 0;
+}
+
+/* Stilovi za sekcije sa podacima */
+.osnovni-podaci, .usluge-cenovnik, .ocene, .mapa {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.osnovni-podaci p, .usluge-cenovnik p, .ocene p {
+    margin: 8px 0;
+    font-size: 1.05em;
+    color: #333;
+}
+
+.osnovni-podaci strong, .usluge-cenovnik strong, .ocene strong {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.usluge-cenovnik ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+.usluge-cenovnik li {
+    background-color: #e9f5ff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    border-left: 3px solid #007bff;
+}
+
+/* Ocene - Zvezdice */
+.ocene span[style*="gold"] {
+    font-size: 1.2em;
+    margin-right: 2px;
+}
+.ocene span[style*="lightgray"] {
+    font-size: 1.2em;
+    margin-right: 2px;
+}
+
+/* Galerija */
+.galerija h3 {
+    color: #343a40;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 5px;
+}
+
+.glavna-slika {
+    border: 5px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kontrole button {
+    padding: 8px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.kontrole button:disabled {
+    background-color: #ced4da;
+    cursor: not-allowed;
+}
+
+/* Mapa */
+.mapa h3 {
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.mapa-slika {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Stil za dugme 'Nazad' */
+.detalji-container > p > button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.detalji-container > p > button:hover {
+    color: #0056b3;
+}
+
+/* Zakazivanje kontejner */
+.zakazivanje-container {
+    background-color: #f0f8ff; /* Svetlo plava pozadina */
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+    border: 2px solid #007bff;
+}
+
+.zakazivanje-container h2 {
+    color: #007bff;
+    border-bottom: 1px solid #b3d9ff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.forma-grupa {
+    margin-bottom: 15px;
+}
+
+.forma-grupa label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.forma-grupa input[type="date"],
+.forma-grupa input[type="number"],
+.forma-grupa input[type="text"],
+.forma-grupa textarea {
+    width: 300px;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.forma-grupa textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Sumar rezervacije (Korak 2) */
+.sumar-rezervacije {
+    border: 1px dashed #007bff !important;
+    background-color: #e6f0ff !important;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.sumar-rezervacije p {
+    margin: 5px 0;
+}
+
+.sumar-rezervacije strong {
+    color: #007bff;
+}
+
+/* Stilovi dugmadi u koracima */
+.zakazivanje-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    text-transform: none; /* Ne želimo uppercase za navigaciona dugmad */
+}
+
+/* Dugme Nastavi (Korak 1) */
+.zakazivanje-container button[type="submit"] {
+    background-color: #007bff !important;
+    color: white;
+}
+.zakazivanje-container button[type="submit"]:hover {
+    background-color: #0056b3 !important;
+}
+
+/* Dugme Plati (Korak 2) */
+.zakazivanje-container button[type="submit"][style*="#28a745"] {
+    background-color: #28a745 !important;
+}
+.zakazivanje-container button[type="submit"][style*="#28a745"]:hover {
+    background-color: #1e7e34 !important;
+}
+
+/* Dugme Nazad (Korak 2) */
+.zakazivanje-container button[style*="#6c757d"] {
+    background-color: #6c757d !important;
+}
+.zakazivanje-container button[style*="#6c757d"]:hover {
+    background-color: #5a6268 !important;
+}
+
+/* Stilovi za status poruke (Korak 3) */
+.zakazivanje-container h4 {
+    margin-top: 0;
+}
+
+.zakazivanje-container div[style*="red"],
+.zakazivanje-container div[style*="green"] {
+    border-width: 2px !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+}

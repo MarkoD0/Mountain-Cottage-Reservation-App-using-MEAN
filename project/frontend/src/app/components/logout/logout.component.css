@@ -1,0 +1,43 @@
+:host {
+    --danger-color: #E53935; /* Red */
+    --danger-hover: #D32F2F;
+    --border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    width: 100%;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: var(--danger-hover);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #C62828;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
